@@ -1,0 +1,11 @@
+user_commentaire:
+    resource: "@UserBundle/Resources/config/routing/commentaire.yml"
+    prefix:   /commentaire
+
+user_login:
+    path:      /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+user_register:
+    path:      /register
+    defaults: { _controller: FOSUserBundle:Registration:register }

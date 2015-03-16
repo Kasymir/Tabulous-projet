@@ -1,0 +1,23 @@
+tablature_tablature:
+    resource: "@TablatureBundle/Resources/config/routing/tablature.yml"
+    prefix:   /tablature
+
+tablature_liste:
+    path:      /tablatures
+    defaults: { _controller: TablatureBundle:Tablature:listet }
+
+tablature_view:
+    path:      /tablatures/{id}
+    defaults: { _controller: TablatureBundle:Tablature:tablatureView }
+    requirements:
+        id: \d+
+
+artiste_view:
+    path:      /artistes/{id}
+    defaults: { _controller: TablatureBundle:Tablature:artisteView }
+    requirements:
+        id: \d+
+
+artiste_liste:
+    path: /artistes
+    defaults: { _controller: TablatureBundle:Tablature:listea }

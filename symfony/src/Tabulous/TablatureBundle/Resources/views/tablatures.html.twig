@@ -1,0 +1,52 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/tablatures.html.twig #}
+
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Recherche tablature - {{ parent() }}
+{% endblock %}
+
+{% block tabulous_body %}
+
+<article class="box post post-excerpt">
+  <header>
+      <h2><a href="#">TABLATURES</a></h2>
+      <p>List</p>
+  </header>
+    <div class="info">
+      <ul class="stats">
+       </br>
+       </br>
+       </br>
+       </br>
+      </br>
+      </ul>
+    </div>
+  <table class="default" cellspacing="4" cellpadding="6"  border="4" >
+      <thead> 
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Instrument</th>
+          <th>Kind</th>
+          <th>Member</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tablature in listTablature %}
+          <tr>
+            <td> <a href="{{ path('tablature_view', {'id': tablature.id}) }}">{{ tablature.nommusique }}</a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idartiste.nom }} </a></td>
+            <td>{{ tablature.idinstrument.nom }} </td>
+            <td>{{ tablature.idgenre.nom }} </td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idmembre.id }) }}"> {{ tablature.idmembre.username }} </a></td>
+            <td>{{ tablature.moyenne }}</td>
+          </tr>
+       
+        {% else %}
+          <p>Pas (encore !) de tablatures</p>
+        {% endfor %}
+      </tbody></table>
+  </article>  
+{% endblock %}

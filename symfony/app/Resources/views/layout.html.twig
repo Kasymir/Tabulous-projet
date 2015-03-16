@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>{% block title %}Tabulous{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    {% block javascript %}
+      {% javascripts 
+        '@SiteBundle/Resources/public/js/jquery.min.js'
+        '@SiteBundle/Resources/public/js/skel.min.js'
+        '@SiteBundle/Resources/public/js/skel-layers.min.js'
+        '@SiteBundle/Resources/public/js/init.js'
+      %}
+      <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+    {% endblock %}
+    
+    {% block stylesheets %}
+      {% stylesheets output="css/compiled/main.css" filter='cssrewrite'
+        'bundles/site/css/skel.css'
+        'bundles/site/css/style.css'
+        'bundles/site/css/style-desktop.css'
+        'bundles/site/css/style-wide.css'
+      %}
+      <link rel="stylesheet" href="{{ asset_url }}"/>
+      {% endstylesheets %}
+    {% endblock %}
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('ul li a').click(function() {
+
+        $('ul li.current').removeClass('current');
+        $(this).parent('li').addClass('current');
+    });
+  });
+</script>
+
+</head>
+
+<body class="left-sidebar">
+
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Content -->
+          <div id="content">
+            <div class="inner">
+          
+              <!-- Post -->
+                {% block body %}
+                {% endblock %}
+
+            </div>
+          </div>
+
+      <!-- MenuTop -->
+       
+
+          <!-- Sidebar -->
+            <div id="sidebar">
+            
+              <!-- Logo -->
+                <h1 id="logo"><a href="{{ path('site_home') }}">TABULOUS</a></h1>
+
+              <!-- Nav -->
+              <nav id="nav">
+                <ul class="menu-vertical">
+                  <li class="current"><a href="{{ path('site_home')}}">Home »</a></li>
+                  <li><a href="{{ path('tablature_liste') }}">Tablatures »</a></li>
+                  <li><a href="{{ path('artiste_liste') }}">Artistes »</a></li>   
+                  <li><a href="{{ path('user_register') }}">Register »</a></li>
+                </ul>
+              </nav>
+
+              <!-- Search -->
+                <section class="box search">
+                  {{ render(controller("SiteBundle:Site:form")) }}
+                </section>
+          
+              <!-- Text -->
+                <section class="box text-style1">
+                  <div class="inner">
+                   
+                      <h2>SIGN IN »</h2>
+                      {{ render(controller("FOSUserBundle:Security:login")) }}
+                    
+                  </div>
+                </section>
+            
+              <!-- Recent Posts -->
+                <section class="box recent-posts">
+                  <header>
+                    <h2>LAST ADDED :</h2>
+                  </header>
+                      {{ render(controller("SiteBundle:Site:last_add")) }}
+                </section>
+            
+              <!-- Recent Check -->
+                <section class="box recent-posts">
+                  <header>
+                    <h2>LAST CHECKED :</h2>
+                  </header>
+                      {{ render(controller("SiteBundle:Site:last_check")) }}
+                </section>
+
+              <!-- Best rate -->
+                <section class="box recent-posts">
+                  <header>
+                    <h2>BEST RATE :</h2>
+                  </header>
+                      {{ render(controller("SiteBundle:Site:best_rate")) }}
+                </section>
+              
+              <!-- Copyright -->
+                <ul id="copyright">
+                  <li>&copy; Tabulous.</li><li>Copyright © <a href="#"><strong>Tabulous Papam</strong></a></li>
+                </ul>
+
+            </div>
+
+      </div>
+
+  </body>
+
+</html>

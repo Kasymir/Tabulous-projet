@@ -1,0 +1,11 @@
+# src/OC/PlatformBundle/Resources/config/routing.yml
+
+site_home:
+    path:      /
+    defaults:  { _controller: SiteBundle:Site:index, page: 1 }
+    requirements:
+        page: \d*
+
+research:
+    path:      /research
+    defaults:  { _controller: SiteBundle:Site:research }

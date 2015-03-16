@@ -1,0 +1,35 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Consultation de tablature - {{ parent() }}
+{% endblock %}
+
+{% block tabulous_body %}
+<article class="box post post-excerpt">
+  <header>
+      <h2><a href="#">{{ tab.nomMusique }}</a></h2>
+      <p>By <a href="{{ path('artiste_view', {'id': tab.idartiste.id }) }}">{{ tab.idArtiste.getNom() }}</a>, rate {{ tab.moyenne }}</p>
+  </header>
+    <div class="info">
+      <ul class="stats">
+        </br>
+       </br>
+       </br>
+       </br>
+      </br>
+      </ul>
+    </div>
+
+  <textarea>
+  {% for line in affichage %}           
+    {{ line }}        
+  {% endfor %}
+  </textarea>    
+  
+  <p>
+    <a href="{{ path('tablature_liste') }}" class="button">
+      Retour à la liste »
+    </a>
+  </p>
+</article>
+{% endblock %}

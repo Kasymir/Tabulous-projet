@@ -1,0 +1,11 @@
+<ul>
+  					{% for tablature2 in listTablature2 %}
+                      <li><a href="{{ path('tablature_view', {'id': tablature2.id}) }}">{{ tablature2.nommusique }}</a> - 
+                      <a href="{{ path('artiste_view', {'id': tablature2.idartiste.id }) }}"> {{ tablature2.idartiste.nom }} </a></br>
+                    
+                       {{ tablature2.idinstrument.nom }}
+                  </li>
+                    {% else %}
+                      <li><p>Pas (encore !) de tablatures</p></li>
+                    {% endfor %}
+</ul>
